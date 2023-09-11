@@ -1,6 +1,10 @@
 {
-  "name": "common",
+  "name": "@your-namespace/common",
   "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT"
+  "dependencies": {
+    "axios": "^0.21.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
 }
