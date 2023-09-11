@@ -1,0 +1,12 @@
+{
+  "name": "data-ingestion-service",
+  "version": "1.0.0",
+  "description": "Data ingestion service for IoT monitoring system",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "keywords": []
+}

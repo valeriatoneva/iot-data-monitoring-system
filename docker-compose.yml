@@ -1,0 +1,25 @@
+version: '3'
+services:
+  # Backend services
+  data-ingestion-service:
+    build: ./backend/data-ingestion-service
+    ports:
+      - "3001:3001"
+  alerting-service:
+    build: ./backend/alerting-service
+    ports:
+      - "3002:3002"
+
+  # Frontend services
+  dashboard:
+    build: ./frontend/dashboard
+    ports:
+      - "8081:80"
+  settings:
+    build: ./frontend/settings
+    ports:
+      - "8082:80"
+  main:
+    build: ./frontend/main
+    ports:
+      - "8080:80"

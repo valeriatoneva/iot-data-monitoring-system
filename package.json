@@ -1,0 +1,13 @@
+{
+  "name": "iot-data-monitoring-system",
+  "private": true,
+  "workspaces": [
+    "frontend/*",
+    "backend/*",
+    "common"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "lerna": "^7.2.0"
+  }
+}
