@@ -1,0 +1,23 @@
+.alert {
+    padding: 10px;
+    margin: 10px;
+    border-radius: 4px;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  .low {
+    background-color: #f0ad4e;
+    color: white;
+  }
+  
+  .medium {
+    background-color: #5bc0de;
+    color: white;
+  }
+  
+  .high {
+    background-color: #d9534f;
+    color: white;
+  }
+  
