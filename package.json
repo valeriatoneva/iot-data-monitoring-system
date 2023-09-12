@@ -1,7 +1,9 @@
 {
   "name": "iot-data-monitoring-system",
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "mongoose": "^7.5.1"
+  },
   "devDependencies": {
     "lerna": "^7.2.0"
   }
