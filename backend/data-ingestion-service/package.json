@@ -4,14 +4,21 @@
   "description": "Data ingestion service for IoT monitoring system",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "build": "webpack --mode production"
   },
   "author": "",
   "license": "ISC",
   "keywords": [],
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.0.0",
     "mongoose": "^7.5.1"
+  },
+  "devDependencies": {
+    "webpack-cli": "^5.1.4"
   }
 }
