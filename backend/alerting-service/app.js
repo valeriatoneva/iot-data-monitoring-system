@@ -21,6 +21,11 @@ db.on('error', (err) => {
   console.log(`MongoDB connection error: ${err}`);
 });
 
+// Root path route handler
+app.get('/', (req, res) => {
+  res.send('Hello, this is the Alerting Service');
+});
+
 // Use the alert routes
 app.use('/alerts', alertRoutes);
 

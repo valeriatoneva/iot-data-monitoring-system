@@ -4,7 +4,7 @@ services:
   data-ingestion-service:
     build: ./backend/data-ingestion-service
     ports:
-      - "3001:3001"
+      - "3000:3000"
   alerting-service:
     build: ./backend/alerting-service
     ports:
