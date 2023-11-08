@@ -1,62 +1,100 @@
-Starting an IoT data monitoring system involves several stages, including setting up your development environment, initializing the backend services, preparing the frontend, and ensuring all components communicate effectively. Here's a step-by-step guide to help you get started:
+# IoT Data Monitoring System
 
-1. Environment Setup
-Install docker and MongoDB and make sure it's running as your backend services will need to connect to it.
-Clone the repository to your local machine if you haven't already.
-2. Backend Services
-Navigate to the backend directory in your terminal.
+## Introduction
+The IoT Data Monitoring System is designed to collect, process, and visualize data from various IoT sensors. This system is capable of handling large streams of data in real-time and provides a user-friendly dashboard for monitoring and alert notifications.
 
-Set up environment variables. Create a .env file in your backend service root directory and define necessary variables such as:
+## Features
+- Real-time data ingestion from IoT sensors
+- Data processing and storage using MongoDB
+- Real-time alerting based on predefined sensor thresholds
+- User authentication and management
+- Dashboard for data visualization and alert monitoring
 
-MONGO_URI=mongodb://localhost:27017/sensorDB
-JWT_SECRET=your_jwt_secret
-PORT=3000
+## System Architecture
 
-Each service (alerting-service and data-ingestion-service) has its own app.js file. You'll need to navigate into the directory of the service you want to start and run the npm start command from there.
+The IoT Data Monitoring System is architected using a microservices approach for the backend and microfrontends for the frontend, ensuring scalability, maintainability, and a separation of concerns across different aspects of the system.
 
-- cd data-ingestion-service
-- npm install
-- npm start
+### Backend Architecture
+
+Our backend is composed of two primary microservices:
+
+1. **Data Ingestion Service**: Responsible for handling real-time data streams from IoT devices. It processes and validates incoming sensor data before storing it in the MongoDB database. This service ensures data integrity and provides an API for data retrieval.
+
+2. **Alerting Service**: Monitors the ingested data for specific conditions or thresholds. When a threshold is met, this service generates alerts and notifications. It also provides an API for managing and retrieving alerts.
+
+Both services are designed to operate independently, with their own databases and APIs, facilitating easy updates and scaling.
+
+### Frontend Architecture
+
+The frontend is split into several microfrontends, each serving a distinct feature of the dashboard:
+
+- **Main Dashboard**: Serves as the primary interface for users, displaying real-time data and alerts.
+- **Settings**: Allows users to configure various parameters and settings for the IoT devices and alert conditions.
+- **Other Feature-Specific UIs**: Additional microfrontends can be developed and integrated as needed, without impacting the rest of the frontend ecosystem.
+
+This architecture is built to be modular, allowing for features to be updated or added with minimal disruption.
+
+### Communication
+
+The microservices and microfrontends communicate over HTTP/HTTPS protocols. The backend services expose RESTful APIs that the frontend consumes to display data and interact with the backend.
+
+### Containerization
+
+The entire system is containerized using Docker, which simplifies deployment and provides a consistent environment for development, testing, and production.
+
+Docker Compose orchestrates the multi-container setup, ensuring that each service can be launched with a single command, maintaining the necessary inter-service links.
+
+### Development and Build Process
+
+We use Lerna to manage multiple JavaScript packages in the same repository, streamlining the development process of our microservices and microfrontends.
+
+Webpack compiles and bundles the frontend code, optimizing for performance and ensuring compatibility across different browsers and environments.
 
 
+### Prerequisites
+- Node.js
+- MongoDB
+- Docker (optional for containerization)
 
-3. Frontend Services
-Navigate to the frontend directory in your terminal.
-Install dependencies for the frontend services using npm or Yarn.
-sh
-Copy code
+### Installation
+
+#### Backend
+Navigate to each backend service directory and install dependencies:
+
+```sh
+cd backend/data-ingestion-service
 npm install
-or
-sh
-Copy code
-yarn install
-Make sure the frontend is set up to communicate with the backend API at the correct URL and port.
-Start the frontend development server. Most frontend setups have a command similar to:
-sh
-Copy code
-npm run start
-or
-sh
-Copy code
-yarn start
-The frontend should now be accessible in your web browser, usually at http://localhost:3000 or another port specified in the frontend configuration.
-4. Testing End-to-End
-With both the frontend and backend running, perform an end-to-end test to make sure they are integrated properly.
-Try out the full flow from the frontend: signing up a user, logging in, sending sensor data through the API, and verifying that the data is correctly displayed and stored.
-5. Docker Setup
-Since you have a docker-compose.yml file, make sure it is configured correctly with the services, networks, and volumes.
-Use Docker Compose to build and run your containers:
-sh
-Copy code
-docker-compose up --build
-This command will build the Docker images for your services and start them up.
-6. Monitoring and Debugging
-Monitor your application's logs for any errors or issues.
-If there are errors, debug them by checking the stack trace, logs, and reviewing your code.
-7. Continuous Development
-As you develop new features or make changes, repeat the testing process to ensure stability.
-Implement additional tooling as needed for automated testing, CI/CD, linting, and code formatting.
-8. Deployment
-Once you're confident in the stability of your application, you can prepare for deployment to a production environment.
-Consider using services like AWS, GCP, Azure, or Heroku for hosting your application.
-Remember that setting up a system like this can be complex and may require troubleshooting various issues along the way. If you encounter specific errors or have questions about certain steps, feel free to ask for more detailed help.
+
+cd backend/alerting-service
+npm install
+```
+
+#### Frontend
+Navigate to the frontend directory and install dependencies:
+
+```sh
+cd frontend/main
+npm install
+```
+
+#### Running the Application
+Backend Services
+
+```sh
+# Data Ingestion Service
+cd backend/data-ingestion-service
+npm start
+
+# Alerting Service
+cd backend/alerting-service
+npm start
+```
+
+#### Frontend
+```sh
+# Main Dashboard
+cd frontend/main
+npm start
+```
+Access the dashboard at http://localhost:3000.
+
